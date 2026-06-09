@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agent Dashboard - Insurance Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var role = sessionStorage.getItem("role");
+            if (!role) window.location.replace("/login");
+            else if (role === "customer") window.location.replace("/dashboard");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="dashboard-header">
+            <h1>🛡️ Agent Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <!-- ADD POLICY -->
+            <div class="box">
+                <h2>➕ Add Insurance Policy</h2>
+
+                <input type="text" id="policy_name" placeholder="Policy Name">
+                <input type="number" id="policy_amount" placeholder="Policy Amount (₹)">
+                <input type="text" id="policy_duration" placeholder="Duration (e.g. 1 Year)">
+                <textarea id="description" placeholder="Description"></textarea>
+
+                <button onclick="addPolicy()">Add Policy</button>
+            </div>
+
+            <!-- UPDATE CLAIM -->
+            <div class="box">
+                <h2>✏️ Update Claim Status</h2>
+
+                <input type="number" id="update_claim_id" placeholder="Claim ID">
+
+                <select id="claim_status">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+
+                <button onclick="updateClaim()">Update Claim</button>
+            </div>
+
+            <!-- ADD PAYMENT -->
+            <div class="box">
+                <h2>💳 Add Payment Record</h2>
+
+                <input type="number" id="customer_id" placeholder="Customer ID">
+                <input type="number" id="payment_amount" placeholder="Amount (₹)">
+
+                <button onclick="addPayment()">Add Payment</button>
+            </div>
+
+            <!-- UPDATE APPLICATION -->
+            <div class="box">
+                <h2>📋 Update Application Status</h2>
+
+                <input type="number" id="application_id" placeholder="Application ID">
+
+                <select id="application_status">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+
+                <button onclick="updateApplication()">Update Application</button>
+            </div>
+
+        </div>
+
+        <!-- VIEW ALL CLAIMS -->
+        <div class="box full-width">
+            <div class="section-header">
+                <h2>📁 All Claims</h2>
+                <button class="load-btn" onclick="loadAllClaims()">Load Claims</button>
+            </div>
+            <div id="allClaimsList" class="table-wrapper"></div>
+        </div>
+
+        <!-- VIEW ALL APPLICATIONS -->
+        <div class="box full-width">
+            <div class="section-header">
+                <h2>📄 All Policy Applications</h2>
+                <button class="load-btn" onclick="loadAllApplications()">Load Applications</button>
+            </div>
+            <div id="allApplicationsList" class="table-wrapper"></div>
+        </div>
+
+        <!-- MANAGE POLICIES -->
+        <div class="box full-width">
+            <div class="section-header">
+                <h2>📦 Manage Policies</h2>
+                <button class="load-btn" onclick="loadAgentPolicies()">Load Policies</button>
+            </div>
+            <div id="agentPolicyList" class="table-wrapper"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

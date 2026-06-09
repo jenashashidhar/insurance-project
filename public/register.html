@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register - Insurance Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var role = sessionStorage.getItem("role");
+            if (role === "agent") window.location.replace("/agent");
+            else if (role === "customer") window.location.replace("/dashboard");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <main class="auth-box">
+
+        <h1>🛡️ Create Account</h1>
+        <p class="subtitle">Register as a new customer</p>
+
+        <input type="text" id="name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email Address">
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="registerUser()">Register</button>
+
+        <p class="small-text">
+            Already registered? <a href="/login">Login here</a>
+        </p>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

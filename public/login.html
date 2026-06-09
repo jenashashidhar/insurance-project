@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login - Insurance Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var role = sessionStorage.getItem("role");
+            if (role === "agent") window.location.replace("/agent");
+            else if (role === "customer") window.location.replace("/dashboard");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <main class="auth-box">
+
+        <h1>🛡️ Insurance Portal</h1>
+        <p class="subtitle">Login to your account</p>
+
+        <input type="email" id="loginEmail" placeholder="Email Address">
+        <input type="password" id="loginPassword" placeholder="Password">
+
+        <button onclick="loginUser()">Login</button>
+
+        <p class="small-text">
+            New user? <a href="/register">Create account</a>
+        </p>
+
+        <p class="small-text agent-hint">
+            Agent Login: agent@gmail.com / 123
+        </p>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

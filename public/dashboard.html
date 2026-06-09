@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Dashboard - Insurance Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var role = sessionStorage.getItem("role");
+            if (!role) window.location.replace("/login");
+            else if (role === "agent") window.location.replace("/agent");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="dashboard-header">
+            <h1>👤 Customer Dashboard</h1>
+            <div>
+                <span class="welcome-text" id="welcomeText"></span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <!-- APPLY POLICY -->
+            <div class="box">
+                <h2>📝 Apply for Policy</h2>
+
+                <button class="load-btn" style="margin-bottom:12px" onclick="viewPolicies()">
+                    Browse Policies
+                </button>
+
+                <div id="policyList"></div>
+
+                <input type="number" id="policy_id" placeholder="Enter Policy ID to Apply">
+
+                <button onclick="applyPolicy()">Apply Policy</button>
+            </div>
+
+            <!-- SUBMIT CLAIM -->
+            <div class="box">
+                <h2>🗂️ Submit a Claim</h2>
+
+                <input type="number" id="claim_policy_id" placeholder="Policy ID">
+
+                <textarea id="claim_reason" placeholder="Describe your claim reason..."></textarea>
+
+                <button onclick="submitClaim()">Submit Claim</button>
+
+                <div id="submitClaimResult"></div>
+            </div>
+
+            <!-- CHECK CLAIM STATUS -->
+            <div class="box">
+                <h2>🔍 Check Claim Status</h2>
+
+                <input type="number" id="claim_id" placeholder="Enter Claim ID">
+
+                <button onclick="checkClaimStatus()">Check Status</button>
+
+                <h3 id="claimResult"></h3>
+            </div>
+
+        </div>
+
+        <!-- MY CLAIMS -->
+        <div class="box full-width">
+            <div class="section-header">
+                <h2>📋 My Claims</h2>
+                <button class="load-btn" onclick="loadMyClaims()">Load My Claims</button>
+            </div>
+            <div id="myClaimsList" class="table-wrapper"></div>
+        </div>
+
+        <!-- MY APPLICATIONS -->
+        <div class="box full-width">
+            <div class="section-header">
+                <h2>📁 My Applications</h2>
+                <button class="load-btn" onclick="loadMyApplications()">Load My Applications</button>
+            </div>
+            <div id="myApplicationsList" class="table-wrapper"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "insurance-policy-management",
+  "version": "1.0.0",
+  "description": "Insurance Policy Management System",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
