@@ -487,8 +487,13 @@ app.post("/add-payment", (req, res) => {
 // SERVER START
 // =====================================
 
-app.listen(3000, () => {
-    console.log("🚀 Server running at http://localhost:3000");
+// =====================================
+// SERVER START
+// =====================================
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
     console.log("👤 Agent login  : agent@gmail.com / 123");
-    console.log("📋 Open browser : http://localhost:3000");
 });
